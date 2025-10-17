@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML-GARDEN</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="garden-page">
+    <div class="home-button-container">
+        <a href="index.html" id="home-button">
+            <img src="image/backgardenpage.svg" alt="Вернуться на главную">
+        </a>
+    </div>
+
+    <div class="allplants">
+        <div class="width" id="plantsContainer">
+            <!-- Растения будут загружены динамически -->
+        </div>
+    </div>
+
+    <script>
+        let plantsData = [];
+
+        // Загружаем данные о растениях
+        async function loadPlants() {
+            try {
+                const response = await fetch('plants.json');
+                const data = await response.json();
+                plantsData = data.plants;
+                renderPlants();
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+            }
+        }
+
+        // Отображаем растения на странице
+        function renderPlants() {
+            const container = document.getElementById('plantsContainer');
+            container.innerHTML = '';
+
+            plantsData.forEach(plant => {
+                const img = document.createElement('img');
+                img.className = 'plant';
+                img.src = plant.image;
+                img.alt = plant.name;
+                img.onclick = () => openPlantDetails(plant.id);
+                container.appendChild(img);
+            });
+        }
+
+        // Открываем страницу с деталями растения
+        function openPlantDetails(plantId) {
+            // Переходим на страницу с деталями, передавая ID растения
+            window.location.href = `plant.html?id=${plantId}`;
+        }
+
+        // Загружаем растения при загрузке страницы
+        loadPlants();
+    </script>
+</body>
+</html>

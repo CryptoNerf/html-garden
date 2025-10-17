@@ -1,0 +1,63 @@
+/* Общие стили */
+body {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    text-align: center;
+    background-color: #247b27;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Главная страница */
+.main-title {
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.shapka {
+    position: relative;
+    max-width: 800px;
+    height: 250px;
+}
+
+.nav-link {
+    position: absolute;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-size: 32px;
+    color: #f4d03f;
+    text-decoration: underline;
+    transition: transform 0.3s ease;
+    text-shadow:
+        1px 1px 0 #BA894D,
+        -1px -1px 0 #BA894D,
+        1px -1px 0 #BA894D,
+        -1px 1px 0 #BA894D;
+}
+
+/* .nav-link:hover {
+    transform: scale(1.15);
+} */
+
+.nav-manual {
+    top: 20px;
+    left: 348px;
+    transform: rotate(-50deg);
+}
+
+.nav-description {
+    top: 80px;
+    right: 348px;
+    transform: rotate(24deg);
+}
+
+.nav-garden {
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-5deg);
+    font-weight: bold;
+}

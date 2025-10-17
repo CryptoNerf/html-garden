@@ -1,0 +1,372 @@
+/* Общие стили */
+body {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    text-align: center;
+    background-color: #247b27;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+/* Главная страница */
+.main-title {
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.shapka {
+    position: relative;
+    max-width: 800px;
+    height: 250px;
+}
+
+.nav-link {
+    position: absolute;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-size: 32px;
+    color: #f4d03f;
+    text-decoration: underline;
+    transition: transform 0.3s ease;
+    text-shadow:
+        1px 1px 0 #BA894D,
+        -1px -1px 0 #BA894D,
+        1px -1px 0 #BA894D,
+        -1px 1px 0 #BA894D;
+}
+
+/* .nav-link:hover {
+    transform: scale(1.15);
+} */
+
+.nav-manual {
+    top: 20px;
+    left: 348px;
+    transform: rotate(-50deg);
+}
+
+.nav-description {
+    top: 80px;
+    right: 348px;
+    transform: rotate(24deg);
+}
+
+.nav-garden {
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-5deg);
+    font-weight: bold;
+}
+
+/* Страницы контента */
+body.content-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    min-height: 100vh;
+}
+
+.page-title {
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.content-wrapper {
+    max-width: 700px;
+    width: 100%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+/* Контейнер для кнопки Home */
+.home-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    margin-bottom: 60px;
+}
+
+/* Кнопка Home */
+#home-button {
+    width: 100px;
+    height: 100px;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center center;
+}
+
+#home-button:hover {
+    transform: scale(1.2);
+}
+
+#home-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .home-button-container {
+        padding-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    #home-button {
+        width: 80px;
+        height: 80px;
+    }
+
+    #home-button:hover {
+        transform: scale(1.2);
+    }
+
+    .main-title {
+        max-width: 90%;
+        margin-bottom: 30px;
+    }
+
+    .shapka {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+        position: static;
+        align-items: center;
+    }
+
+    .nav-link {
+        position: static;
+        font-size: 32px;
+    }
+
+    .nav-manual {
+        transform: rotate(-8deg);
+    }
+
+    .nav-description {
+        transform: rotate(12deg);
+    }
+
+    .nav-garden {
+        transform: rotate(-5deg);
+    }
+
+    /* Страница plant на мобильных */
+    body.plant-page .page-title {
+        font-size: 36px;
+    }
+
+    .plant-circle, .user-circle {
+        width: 90vw;
+        height: 90vw;
+        max-width: 400px;
+        max-height: 400px;
+    }
+
+    .plant-image {
+        max-width: 180px;
+        max-height: 180px;
+    }
+
+    .user-photo {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+/* Текстовые стили для страниц */
+.manual-text {
+    color: #f4d03f;
+    font-size: 22px;
+    text-align: center;
+    margin: 0;
+    text-shadow:
+        1px 1px 0 #BA894D,
+        -1px -1px 0 #BA894D,
+        1px -1px 0 #BA894D,
+        -1px 1px 0 #BA894D;
+}
+
+.manual-text a {
+    color: #f4d03f;
+    text-decoration: underline;
+}
+
+.description2 {
+    color: #f4d03f;
+    font-size: 22px;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0;
+    text-shadow:
+        1px 1px 0 #BA894D,
+        -1px -1px 0 #BA894D,
+        1px -1px 0 #BA894D,
+        -1px 1px 0 #BA894D;
+}
+
+/* Страница галереи растений */
+body.garden-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+    min-height: 100vh;
+}
+
+.allplants {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.width {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.plant {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.plant:hover {
+    transform: scale(1.3);
+}
+
+/* Страница растения (Plant Description) */
+body.plant-page {
+    overflow-y: auto;
+    min-height: 100vh;
+    height: auto;
+}
+
+body.plant-page .page-title {
+    font-size: 48px;
+    margin: 0 0 40px;
+    color: #f4d03f;
+    text-shadow:
+        1px 1px 0 #BA894D,
+        -1px -1px 0 #BA894D,
+        1px -1px 0 #BA894D,
+        -1px 1px 0 #BA894D,
+        2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.plant-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 60px; */
+    /* padding: 40px; */
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Круги для растения и пользователя */
+.plant-circle, .user-circle {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.plant-content, .user-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.plant-image {
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: contain;
+    margin-bottom: -20px;
+}
+
+.plant-info {
+    text-align: center;
+}
+
+.plant-name-text, .plant-description-text, .plant-date-text {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    color: #f4d03f;
+    margin: 5px 0;
+    font-size: 18px;
+    text-shadow:
+        1px 1px 0 #BA894D,
+        -1px -1px 0 #BA894D,
+        1px -1px 0 #BA894D,
+        -1px 1px 0 #BA894D,
+        1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.plant-description-text {
+    max-width: 260px;
+}
+
+/* Круг пользователя */
+.user-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid #f4d03f;
+}
+
+.user-info {
+    text-align: center;
+}
+
+.user-name-text, .user-city-text {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    color: #f4d03f;
+    margin: 5px 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow:
+        1px 1px 0 #BA894D,
+        -1px -1px 0 #BA894D,
+        1px -1px 0 #BA894D,
+        -1px 1px 0 #BA894D,
+        1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.user-city-text {
+    font-size: 18px;
+    font-weight: normal;
+}

@@ -1,0 +1,180 @@
+{
+  "plants": [
+    {
+      "id": 1,
+      "name": "Дуб столетний",
+      "image": "/image/1.png",
+      "largeImage": "/image/1.png",
+      "description": "Величественный дуб, посаженный моей бабушкой 50 лет назад. Каждую весну радует нас свежей зеленью, а осенью - золотистой листвой. Под его тенью проходят наши семейные пикники.",
+      "plantedDate": "15.05.1974",
+      "owner": "Эмиль Алексанян",
+      "ownerPhoto": "/image/emile.jpg",
+      "city": "Центральный парк"
+    },
+    {
+      "id": 2,
+      "name": "Яблоня 'Антоновка'",
+      "image": "/image/2.png",
+      "largeImage": "/image/2.png",
+      "description": "Старинный сорт яблони, который дает невероятно ароматные плоды. Каждую осень собираем урожай и делаем домашний сидр. Дерево требует особого ухода, но результат того стоит.",
+      "plantedDate": "20.04.2010",
+      "owner": "Эмиль Алексанян",
+      "ownerPhoto": "/image/emile.jpg",
+      "city": "Дачный участок"
+    },
+    {
+      "id": 3,
+      "name": "Береза плакучая",
+      "image": "/image/3.png",
+      "largeImage": "/image/3.png",
+      "description": "Символ русской природы в моем саду. Посадила в память о моем дедушке-лесничем. Весной береза первой покрывается нежными листочками, а зимой ее белая кора особенно красива на фоне снега.",
+      "plantedDate": "10.09.2015",
+      "owner": "Эмиль Алексанян",
+      "ownerPhoto": "/image/emile.jpg",
+      "city": "Загородный дом"
+    },
+    {
+      "id": 4,
+      "name": "Растение 4",
+      "image": "/image/4.png",
+      "largeImage": "/image/4.png",
+      "description": "Красивое растение в нашем саду.",
+      "plantedDate": "01.01.2020",
+      "owner": "Эмиль Алексанян",
+      "ownerPhoto": "/image/emile.jpg",
+      "city": "Сад"
+    },
+    {
+      "id": 5,
+      "name": "Растение 5",
+      "image": "/image/5.png",
+      "largeImage": "/image/5.png",
+      "description": "Красивое растение в нашем саду.",
+      "plantedDate": "01.01.2020",
+      "owner": "Эмиль Алексанян",
+      "ownerPhoto": "/image/emile.jpg",
+      "city": "Сад"
+    },
+    {
+      "id": 6,
+      "name": "Растение 6",
+      "image": "/image/6.png",
+      "largeImage": "/image/6.png",
+      "description": "Красивое растение в нашем саду.",
+      "plantedDate": "01.01.2020",
+      "owner": "Эмиль Алексанян",
+      "ownerPhoto": "/image/emile.jpg",
+      "city": "Сад"
+    },
+    {
+      "id": 7,
+      "name": "Растение 7",
+      "image": "/image/7.png",
+      "largeImage": "/image/7.png",
+      "description": "Красивое растение в нашем саду.",
+      "plantedDate": "01.01.2020",
+      "owner": "Эмиль Алексанян",
+      "ownerPhoto": "/image/emile.jpg",
+      "city": "Сад"
+    },
+    {
+      "id": 8,
+      "name": "Растение 8",
+      "image": "/image/8.png",
+      "largeImage": "/image/8.png",
+      "description": "Красивое растение в нашем саду.",
+      "plantedDate": "01.01.2020",
+      "owner": "Эмиль Алексанян",
+      "ownerPhoto": "/image/emile.jpg",
+      "city": "Сад"
+    },
+    {
+      "id": 9,
+      "name": "Растение 9",
+      "image": "/image/9.png",
+      "largeImage": "/image/9.png",
+      "description": "Красивое растение в нашем саду.",
+      "plantedDate": "01.01.2020",
+      "owner": "Эмиль Алексанян",
+      "ownerPhoto": "/image/emile.jpg",
+      "city": "Сад"
+    },
+    {
+      "id": 10,
+      "name": "Диффузия",
+      "image": "/image/диффузия.png",
+      "largeImage": "/image/диффузия.png",
+      "description": "С ним осторожно, чтобы не диффундировать в глубины его ядра",
+      "plantedDate": "16.10.2025",
+      "owner": "Мария Ленчевская",
+      "ownerPhoto": "/image/masa.jpg",
+      "city": "Москва"
+    },
+    {
+      "id": 11,
+      "name": "Детство",
+      "image": "/image/детство.png",
+      "largeImage": "/image/детство.png",
+      "description": "Люди, берегите его",
+      "plantedDate": "16.10.2025",
+      "owner": "Мария Ленчевская",
+      "ownerPhoto": "/image/masa.jpg",
+      "city": "Москва"
+    },
+    {
+      "id": 12,
+      "name": "Турбина",
+      "image": "/image/турбина.png",
+      "largeImage": "/image/турбина.png",
+      "description": "Взлетаем в стратосферу",
+      "plantedDate": "16.10.2025",
+      "owner": "Мария Ленчевская",
+      "ownerPhoto": "/image/masa.jpg",
+      "city": "Москва"
+    },
+    {
+      "id": 13,
+      "name": "Зоркий",
+      "image": "/image/зоркий.png",
+      "largeImage": "/image/зоркий.png",
+      "description": "Маленький но внимательный своим нутром",
+      "plantedDate": "16.10.2025",
+      "owner": "Мария Ленчевская",
+      "ownerPhoto": "/image/masa.jpg",
+      "city": "Москва"
+    },
+    {
+      "id": 14,
+      "name": "Резинка",
+      "image": "/image/резинка.png",
+      "largeImage": "/image/резинка.png",
+      "description": "Ягоды этого дерева нельзя попробовать на вкус",
+      "plantedDate": "16.10.2025",
+      "owner": "Мария Ленчевская",
+      "ownerPhoto": "/image/masa.jpg",
+      "city": "Москва"
+    },
+    {
+      "id": 15,
+      "name": "Вдлинь",
+      "image": "/image/вдлинь.png",
+      "largeImage": "/image/вдлинь.png",
+      "description": "Японская разновидность одуванчика",
+      "plantedDate": "16.10.2025",
+      "owner": "Мария Ленчевская",
+      "ownerPhoto": "/image/masa.jpg",
+      "city": "Москва"
+    },
+    {
+      "id": 16,
+      "name": "Пылесборник",
+      "image": "/image/пылесборник.png",
+      "largeImage": "/image/пылесборник.png",
+      "description": "То самое красивое покрытое дорожной пылью дерево у трассы, отчаянно поглощаяющее углекислый газ, а с ним выхлопной",
+      "plantedDate": "16.10.2025",
+      "owner": "Мария Ленчевская",
+      "ownerPhoto": "/image/masa.jpg",
+      "city": "Москва"
+    }
+  ]
+}

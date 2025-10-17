@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Description - HTML-GARDEN</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="plant-page">
+    <div class="home-button-container">
+        <a href="garden.html" id="home-button">
+            <img src="image/backplantpage.svg" alt="Вернуться в сад">
+        </a>
+    </div>
+
+    <h1 class="page-title">Plant description</h1>
+
+    <div class="plant-container">
+        <div class="plant-circle">
+            <img src="image/foneplant.svg" class="circle-bg" alt="">
+            <div class="plant-content">
+                <img id="plantImage" src="" alt="Plant" class="plant-image">
+                <div class="plant-info">
+                    <p id="plantName" class="plant-name-text"></p>
+                    <p id="plantDescription" class="plant-description-text"></p>
+                    <p id="plantDate" class="plant-date-text"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="user-circle">
+            <img src="image/foneuser.svg" class="circle-bg" alt="">
+            <div class="user-content">
+                <img id="userPhoto" src="" alt="User" class="user-photo">
+                <div class="user-info">
+                    <p id="userName" class="user-name-text"></p>
+                    <p id="userCity" class="user-city-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Получаем ID растения из URL
+        function getPlantIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return parseInt(urlParams.get('id'));
+        }
+
+        // Загружаем данные о растении
+        async function loadPlantDetails() {
+            const plantId = getPlantIdFromUrl();
+
+            if (!plantId) {
+                alert('Растение не найдено');
+                return;
+            }
+
+            try {
+                const response = await fetch('plants.json');
+                const data = await response.json();
+                const plant = data.plants.find(p => p.id === plantId);
+
+                if (plant) {
+                    renderPlantDetails(plant);
+                } else {
+                    alert('Растение не найдено');
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+            }
+        }
+
+        // Отображаем детали растения
+        function renderPlantDetails(plant) {
+            // Данные о растении
+            document.getElementById('plantImage').src = plant.largeImage || plant.image;
+            document.getElementById('plantName').textContent = plant.name;
+            document.getElementById('plantDescription').textContent = plant.description;
+            document.getElementById('plantDate').textContent = plant.plantedDate;
+
+            // Данные о пользователе
+            document.getElementById('userPhoto').src = plant.ownerPhoto || '';
+            document.getElementById('userName').textContent = plant.owner;
+            document.getElementById('userCity').textContent = plant.city;
+
+            document.title = `${plant.name} - HTML-GARDEN`;
+        }
+
+        // Загружаем детали при загрузке страницы
+        loadPlantDetails();
+    </script>
+</body>
+</html>
