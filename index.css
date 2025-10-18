@@ -9,6 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
     /* justify-content: center; */
 }
 
@@ -88,9 +89,9 @@ body.content-page {
 .home-button-container {
     width: 100%;
     display: flex;
-    justify-content: center;
-    padding-top: 40px;
-    margin-bottom: 60px;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-left: 40px;
 }
 
 /* Кнопка Home */
@@ -118,12 +119,12 @@ body.content-page {
 @media (max-width: 768px) {
     .home-button-container {
         padding-top: 20px;
-        margin-bottom: 40px;
-    }
-
-    #home-button {
-        width: 80px;
-        height: 80px;
+        padding-left: 0;
+        justify-content: center;
+        margin-bottom: 20px;
+        margin-left: 0;
+        margin-top: 0;
+        margin-right: 0;
     }
 
     #home-button:hover {
@@ -139,7 +140,7 @@ body.content-page {
         height: auto;
         display: flex;
         flex-direction: column;
-        gap: 80px;
+        gap: 70px;
         position: static;
         align-items: center;
     }
@@ -166,21 +167,55 @@ body.content-page {
         font-size: 36px;
     }
 
+    .plant-container {
+        box-sizing: border-box;
+        padding: 0 20px;
+    }
+
     .plant-circle, .user-circle {
-        width: 90vw;
-        height: 90vw;
-        max-width: 400px;
-        max-height: 400px;
+        min-width: 280px;
     }
 
     .plant-image {
-        max-width: 180px;
-        max-height: 180px;
+        max-width: 40%;
+        max-height: 40%;
     }
 
     .user-photo {
-        width: 140px;
-        height: 140px;
+        width: 30%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .plant-name-text, .plant-description-text, .plant-date-text {
+        font-size: 14px;
+    }
+
+    .plant-description-text {
+        max-width: 80%;
+    }
+
+    .user-name-text, .user-city-text {
+        font-size: 16px;
+    }
+
+    .user-city-text {
+        font-size: 14px;
+    }
+
+    .page-title {
+        max-width: 90%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .content-wrapper {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .allplants {
+        padding: 10px;
     }
 }
 
@@ -229,9 +264,8 @@ body.garden-page {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
     max-width: 1200px;
-    padding: 20px;
+    box-sizing: border-box;
 }
 
 .width {
@@ -263,7 +297,7 @@ body.plant-page {
 
 body.plant-page .page-title {
     font-size: 48px;
-    margin: 0 0 40px;
+    margin: 0 0 0px;
     color: #f4d03f;
     text-shadow:
         1px 1px 0 #BA894D,
@@ -286,8 +320,9 @@ body.plant-page .page-title {
 /* Круги для растения и пользователя */
 .plant-circle, .user-circle {
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;

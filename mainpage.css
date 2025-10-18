@@ -61,3 +61,37 @@ body {
     transform: translateX(-50%) rotate(-5deg);
     font-weight: bold;
 }
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .main-title {
+        max-width: 90%;
+        margin-bottom: 30px;
+    }
+
+    .shapka {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 70px;
+        position: static;
+        align-items: center;
+    }
+
+    .nav-link {
+        position: static;
+        font-size: 32px;
+    }
+
+    .nav-manual {
+        transform: rotate(-8deg);
+    }
+
+    .nav-description {
+        transform: rotate(12deg);
+    }
+
+    .nav-garden {
+        transform: rotate(-5deg);
+    }
+}
