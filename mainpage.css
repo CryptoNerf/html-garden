@@ -67,6 +67,7 @@ body {
     .main-title {
         max-width: 90%;
         margin-bottom: 30px;
+        content: url('image/welcome to html-garden fone ver.png');
     }
 
     .shapka {

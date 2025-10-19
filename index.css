@@ -336,7 +336,7 @@ body.plant-page .page-title {
     max-width: 42%;
     max-height: 42%;
     object-fit: contain;
-    margin-bottom: -20px;
+    margin-bottom: -24px;
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
 }
 
@@ -367,7 +367,7 @@ body.plant-page .page-title {
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #f4d03f;
+    border: 2px solid #f4d03f;
 }
 
 .user-info {
