@@ -448,6 +448,7 @@ body.plant-page .page-title {
     font-family: Arial, sans-serif;
     font-size: 14px;
     box-sizing: border-box;
+    border-radius: 50px;
 }
 
 .form-group input[type="text"]:focus,
@@ -470,6 +471,7 @@ body.plant-page .page-title {
     font-size: 14px;
     cursor: pointer;
     box-sizing: border-box;
+    border-radius: 50px;
 }
 
 .form-group .file-name {
@@ -497,6 +499,7 @@ body.plant-page .page-title {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s;
+    border-radius: 50px;
 }
 
 .submit-button:hover {
