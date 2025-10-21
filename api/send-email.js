@@ -20,12 +20,18 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Логирование для отладки
+    console.log('EMAIL_USER:', process.env.EMAIL_USER ? 'установлен' : 'НЕ УСТАНОВЛЕН');
+    console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? 'установлен' : 'НЕ УСТАНОВЛЕН');
+
     const { userName, plantName, plantDescription, userLocation, plantImage, plantImageName, userPhoto, userPhotoName } = req.body;
 
     // Проверка обязательных полей
     if (!userName || !plantImage) {
       return res.status(400).json({ error: 'Имя пользователя и изображение растения обязательны' });
     }
+
+    console.log('Отправка письма от:', userName);
 
     // Создаем транспорт для Gmail
     const transporter = nodemailer.createTransport({
