@@ -80,12 +80,14 @@ body.content-page {
 
 .page-title-about {
     max-width: 800px;
-    width: 100%;
+    width: 150%;
 }
 
 .page-title-manual {
     max-width: 800px;
-    width: 100%;
+    width: 150%;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .content-wrapper {
@@ -199,7 +201,7 @@ body.content-page {
     }
 
     .page-title-about, .page-title-manual, .page-title-plant {
-        max-width: 100%;
+        max-width: 150%;
         padding: 0 5px;
         box-sizing: border-box;
         margin-top: 120px;
@@ -409,9 +411,11 @@ body.plant-page .page-title {
     max-width: 500px;
     margin: 20px auto;
     padding: 30px;
-    background-color: rgba(36, 123, 39, 0.5);
-    border: 3px solid #f4d03f;
-    border-radius: 15px;
+    background-image: url('image/foneinput.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -442,9 +446,9 @@ body.plant-page .page-title {
 .form-group input[type="text"],
 .form-group textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px 16px;
     border: 2px solid #f4d03f;
-    border-radius: 8px;
+    border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.9);
     font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
     font-size: 16px;
@@ -462,9 +466,9 @@ body.plant-page .page-title {
 .form-group input[type="file"] {
     display: block;
     width: 100%;
-    padding: 8px;
+    padding: 10px 16px;
     border: 2px dashed #f4d03f;
-    border-radius: 8px;
+    border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.9);
     font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
     font-size: 14px;
@@ -490,7 +494,7 @@ body.plant-page .page-title {
     padding: 15px;
     background-color: #f4d03f;
     border: 3px solid #BA894D;
-    border-radius: 10px;
+    border-radius: 30px;
     color: #247b27;
     font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
     font-size: 22px;
@@ -503,7 +507,6 @@ body.plant-page .page-title {
 .submit-button:hover {
     background-color: #BA894D;
     color: #f4d03f;
-    transform: scale(1.05);
 }
 
 .submit-button:active {
