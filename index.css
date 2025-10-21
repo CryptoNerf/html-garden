@@ -72,10 +72,20 @@ body.content-page {
     min-height: 100vh;
 }
 
-.page-title {
+.page-title-plant {
+    max-width: 600px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.page-title-about {
     max-width: 800px;
     width: 100%;
-    margin-bottom: 20px;
+}
+
+.page-title-manual {
+    max-width: 800px;
+    width: 100%;
 }
 
 .content-wrapper {
@@ -188,7 +198,7 @@ body.content-page {
         padding-bottom: 40px;
     }
 
-    .page-title {
+    .page-title-about, .page-title-manual, .page-title-plant {
         max-width: 100%;
         padding: 0 5px;
         box-sizing: border-box;
@@ -333,17 +343,16 @@ body.plant-page .page-title {
 }
 
 .plant-image {
-    max-width: 42%;
-    max-height: 42%;
+    max-width: 60%;
+    max-height: 60%;
     object-fit: contain;
-    margin-bottom: -24px;
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .plant-info {
     text-align: center;
-    max-width: 250px;
-    margin: 0 auto;
+    max-width: 600px;
+    margin: 20px auto;
 }
 
 .plant-name-text, .plant-description-text, .plant-date-text {
@@ -372,6 +381,8 @@ body.plant-page .page-title {
 
 .user-info {
     text-align: center;
+    max-width: 600px;
+    margin: 20px auto;
 }
 
 .user-name-text, .user-city-text {
@@ -391,4 +402,131 @@ body.plant-page .page-title {
 .user-city-text {
     font-size: 18px;
     font-weight: normal;
+}
+
+/* Форма отправки на странице manual */
+.plant-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: rgba(36, 123, 39, 0.5);
+    border: 3px solid #f4d03f;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group.required label::after {
+    content: " *";
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #f4d03f;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow:
+        1px 1px 0 #BA894D,
+        -1px -1px 0 #BA894D,
+        1px -1px 0 #BA894D,
+        -1px 1px 0 #BA894D;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #f4d03f;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #BA894D;
+    background-color: #fff;
+}
+
+.form-group input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: 2px dashed #f4d03f;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
+    font-size: 14px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.form-group .file-name {
+    display: block;
+    margin-top: 8px;
+    color: #f4d03f;
+    font-size: 14px;
+    font-style: italic;
+    text-shadow:
+        1px 1px 0 #BA894D,
+        -1px -1px 0 #BA894D,
+        1px -1px 0 #BA894D,
+        -1px 1px 0 #BA894D;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #f4d03f;
+    border: 3px solid #BA894D;
+    border-radius: 10px;
+    color: #247b27;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button:hover {
+    background-color: #BA894D;
+    color: #f4d03f;
+    transform: scale(1.05);
+}
+
+.submit-button:active {
+    transform: scale(0.95);
+}
+
+/* Мобильная адаптация для формы */
+@media (max-width: 768px) {
+    .plant-form {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .form-group label {
+        font-size: 16px;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea {
+        font-size: 14px;
+    }
+
+    .submit-button {
+        font-size: 18px;
+    }
 }

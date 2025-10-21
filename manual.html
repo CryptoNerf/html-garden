@@ -13,30 +13,151 @@
         </a>
     </div>
 
-    <img src="image/manual.png" alt="Manual" class="page-title">
+    <img src="image/manual.png" alt="Manual" class="page-title-manual">
 
     <div class="content-wrapper">
-        <p class="manual-text">
+        <p class="manual-text" id="manualText">
             <span class="manual-step">1. Перейдите на сайт <a href="https://www.garden-generator.site" target="_blank">garden-generator.site</a></span>
             <br><br>
             <span class="manual-step">2. Создайте свое уникальное растение.</span>
             <br><br>
             <span class="manual-step">3. Экспортируйте изображение растения в формате PNG.</span>
             <br><br>
-            <span class="manual-step">4. Отправьте ваше имя и полученное изображение на почту <a href="mailto:emile.alexanyan@gmail.com">emile.alexanyan@gmail.com</a>.</span>
-            <br>
-            Также по желанию можете прислать:
-            <br>
-            • имя растения;
-            <br>
-            • описание растения;
-            <br>
-            • селфи;
-            <br>
-            • откуда вы;
+            <span class="manual-step">4. Заполните форму ниже и отправьте данные:</span>
             <br><br>
+
+            <form id="plantForm" class="plant-form">
+                <div class="form-group required">
+                    <label for="userName">Имя/Фамилия:</label>
+                    <input type="text" id="userName" name="userName" required>
+                </div>
+
+                <div class="form-group required">
+                    <label for="plantImage">Изображение растения (PNG):</label>
+                    <input type="file" id="plantImage" name="plantImage" accept=".png,image/png" required>
+                    <span class="file-name" id="plantImageName"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="plantName">Имя растения:</label>
+                    <input type="text" id="plantName" name="plantName">
+                </div>
+
+                <div class="form-group">
+                    <label for="plantDescription">Описание растения:</label>
+                    <textarea id="plantDescription" name="plantDescription" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="userPhoto">Селфи:</label>
+                    <input type="file" id="userPhoto" name="userPhoto" accept="image/*">
+                    <span class="file-name" id="userPhotoName"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="userLocation">Откуда вы:</label>
+                    <input type="text" id="userLocation" name="userLocation">
+                </div>
+
+                <button type="submit" class="submit-button">Отправить</button>
+            </form>
+            <br>
             Я закреплю все присланные данные за вашим растением в HTML-саду
         </p>
     </div>
+
+    <script>
+        // Функция конвертации файла в base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        document.getElementById('plantForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitButton = document.querySelector('.submit-button');
+            const originalButtonText = submitButton.textContent;
+
+            // Блокируем кнопку и показываем загрузку
+            submitButton.disabled = true;
+            submitButton.textContent = 'Отправка...';
+
+            try {
+                const userName = document.getElementById('userName').value;
+                const plantImage = document.getElementById('plantImage').files[0];
+                const plantName = document.getElementById('plantName').value;
+                const plantDescription = document.getElementById('plantDescription').value;
+                const userPhoto = document.getElementById('userPhoto').files[0];
+                const userLocation = document.getElementById('userLocation').value;
+
+                // Проверка обязательных полей
+                if (!userName || !plantImage) {
+                    alert('Пожалуйста, заполните все обязательные поля');
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                    return;
+                }
+
+                // Конвертируем изображения в base64
+                const plantImageBase64 = await fileToBase64(plantImage);
+                const userPhotoBase64 = userPhoto ? await fileToBase64(userPhoto) : '';
+
+                // Отправка на Vercel API
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userName: userName,
+                        plantName: plantName,
+                        plantDescription: plantDescription,
+                        userLocation: userLocation,
+                        plantImage: plantImageBase64,
+                        plantImageName: plantImage.name,
+                        userPhoto: userPhotoBase64,
+                        userPhotoName: userPhoto ? userPhoto.name : ''
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Спасибо! Ваши данные успешно отправлены. Ваше растение скоро появится в HTML-саду!');
+
+                    // Очищаем форму
+                    this.reset();
+                    document.getElementById('plantImageName').textContent = '';
+                    document.getElementById('userPhotoName').textContent = '';
+                } else {
+                    throw new Error(result.error || 'Ошибка при отправке');
+                }
+
+            } catch (error) {
+                console.error('FAILED...', error);
+                alert('Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или напишите напрямую на emile.alexanyan@gmail.com');
+            } finally {
+                // Разблокируем кнопку
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        });
+
+        // Отображение имени выбранного файла
+        document.getElementById('plantImage').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name || '';
+            document.getElementById('plantImageName').textContent = fileName;
+        });
+
+        document.getElementById('userPhoto').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name || '';
+            document.getElementById('userPhotoName').textContent = fileName;
+        });
+    </script>
 </body>
 </html>
