@@ -13,6 +13,15 @@ body {
     /* justify-content: center; */
 }
 
+/* Wrapper для контента чтобы copyright был внизу */
+body > *:not(.copyright) {
+    flex-shrink: 0;
+}
+
+body > .copyright {
+    margin-top: auto;
+}
+
 /* Главная страница */
 .main-title {
     max-width: 800px;
@@ -79,13 +88,14 @@ body.content-page {
 }
 
 .page-title-about {
-    max-width: 800px;
-    width: 150%;
+    max-width: 400px;
+    width: 100%;
+    margin-top: 50px;
 }
 
 .page-title-manual {
-    max-width: 800px;
-    width: 150%;
+    max-width: 400px;
+    width: 100%;
     margin-top: 50px;
     margin-bottom: 20px;
 }
@@ -184,24 +194,23 @@ body.content-page {
     }
 
     .plant-name-text, .plant-description-text, .plant-date-text {
-        font-size: 12px;
+        font-size: 18px !important;
     }
 
-    .user-name-text, .user-city-text {
-        font-size: 14px;
+    .user-name-text {
+        font-size: 18px !important;
     }
 
     .user-city-text {
-        font-size: 12px;
+        font-size: 18px !important;
     }
 
     body.content-page {
         justify-content: flex-start;
-        padding-bottom: 40px;
     }
 
     .page-title-about, .page-title-manual, .page-title-plant {
-        max-width: 150%;
+        max-width: 100%;
         padding: 0 5px;
         box-sizing: border-box;
         margin-top: 120px;
@@ -354,7 +363,7 @@ body.plant-page .page-title {
 .plant-info {
     text-align: center;
     max-width: 600px;
-    margin: 20px auto;
+    /* margin: 20px auto; */
 }
 
 .plant-name-text, .plant-description-text, .plant-date-text {
@@ -391,7 +400,7 @@ body.plant-page .page-title {
     font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
     color: #f4d03f;
     margin: 5px 0;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     text-shadow:
         1px 1px 0 #BA894D,
@@ -399,11 +408,6 @@ body.plant-page .page-title {
         1px -1px 0 #BA894D,
         -1px 1px 0 #BA894D,
         1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.user-city-text {
-    font-size: 18px;
-    font-weight: normal;
 }
 
 /* Форма отправки на странице manual */
@@ -513,5 +517,29 @@ body.plant-page .page-title {
     .plant-form {
         max-width: 100%;
         padding: 0 20px;
+    }
+}
+
+/* Copyright footer */
+.copyright {
+    text-align: center;
+    color: #f4d03f;
+    font-size: 14px;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    text-shadow:
+        1px 1px 0 #BA894D,
+        -1px -1px 0 #BA894D,
+        1px -1px 0 #BA894D,
+        -1px 1px 0 #BA894D;
+}
+
+@media (max-width: 768px) {
+    .copyright {
+        font-size: 12px;
+        padding: 15px;
+        margin-top: 30px;
     }
 }

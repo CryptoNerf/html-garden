@@ -9,7 +9,33 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* Основной контент центрируется */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+/* Copyright всегда внизу */
+.copyright {
+    flex-shrink: 0;
+    text-align: center;
+    color: #f4d03f;
+    font-size: 14px;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    text-shadow:
+        1px 1px 0 #BA894D,
+        -1px -1px 0 #BA894D,
+        1px -1px 0 #BA894D,
+        -1px 1px 0 #BA894D;
 }
 
 /* Главная страница */
@@ -94,5 +120,10 @@ body {
 
     .nav-garden {
         transform: rotate(-5deg);
+    }
+
+    .copyright {
+        font-size: 12px;
+        padding: 15px;
     }
 }
