@@ -135,12 +135,16 @@
                     document.getElementById('plantImageName').textContent = '';
                     document.getElementById('userPhotoName').textContent = '';
                 } else {
+                    console.error('Ошибка сервера:', result);
+                    alert('Ошибка: ' + (result.details || result.error || 'Неизвестная ошибка'));
                     throw new Error(result.error || 'Ошибка при отправке');
                 }
 
             } catch (error) {
                 console.error('FAILED...', error);
-                alert('Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или напишите напрямую на emile.alexanyan@gmail.com');
+                if (!error.message.includes('Ошибка при отправке')) {
+                    alert('Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или напишите напрямую на emile.alexanyan@gmail.com');
+                }
             } finally {
                 // Разблокируем кнопку
                 submitButton.disabled = false;
