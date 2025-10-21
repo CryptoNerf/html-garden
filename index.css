@@ -409,33 +409,25 @@ body.plant-page .page-title {
 /* Форма отправки на странице manual */
 .plant-form {
     max-width: 500px;
-    margin: 20px auto;
-    padding: 30px;
-    background-image: url('image/foneinput.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 5px auto;
+    padding: 0;
 }
 
 .form-group {
-    margin-bottom: 20px;
-    text-align: left;
+    margin-bottom: 16px;
 }
 
 .form-group.required label::after {
     content: " *";
     color: #ff6b6b;
-    font-weight: bold;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     color: #f4d03f;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 22px;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
     text-shadow:
         1px 1px 0 #BA894D,
         -1px -1px 0 #BA894D,
@@ -446,31 +438,31 @@ body.plant-page .page-title {
 .form-group input[type="text"],
 .form-group textarea {
     width: 100%;
-    padding: 12px 16px;
-    border: 2px solid #f4d03f;
-    border-radius: 25px;
-    background-color: rgba(255, 255, 255, 0.9);
-    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
-    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
     box-sizing: border-box;
-    transition: border-color 0.3s ease;
 }
 
 .form-group input[type="text"]:focus,
 .form-group textarea:focus {
-    outline: none;
-    border-color: #BA894D;
-    background-color: #fff;
+    outline: 2px solid #4CAF50;
+    border-color: #4CAF50;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 60px;
 }
 
 .form-group input[type="file"] {
-    display: block;
     width: 100%;
-    padding: 10px 16px;
-    border: 2px dashed #f4d03f;
-    border-radius: 25px;
-    background-color: rgba(255, 255, 255, 0.9);
-    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    font-family: Arial, sans-serif;
     font-size: 14px;
     cursor: pointer;
     box-sizing: border-box;
@@ -478,9 +470,9 @@ body.plant-page .page-title {
 
 .form-group .file-name {
     display: block;
-    margin-top: 8px;
+    margin-top: 4px;
     color: #f4d03f;
-    font-size: 14px;
+    font-size: 13px;
     font-style: italic;
     text-shadow:
         1px 1px 0 #BA894D,
@@ -491,45 +483,35 @@ body.plant-page .page-title {
 
 .submit-button {
     width: 100%;
-    padding: 15px;
-    background-color: #f4d03f;
-    border: 3px solid #BA894D;
-    border-radius: 30px;
-    color: #247b27;
-    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Bradley Hand', cursive;
-    font-size: 22px;
+    padding: 12px;
+    margin-top: 8px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
 }
 
 .submit-button:hover {
-    background-color: #BA894D;
-    color: #f4d03f;
+    background-color: #45a049;
 }
 
 .submit-button:active {
-    transform: scale(0.95);
+    background-color: #3d8b40;
+}
+
+.submit-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
 }
 
 /* Мобильная адаптация для формы */
 @media (max-width: 768px) {
     .plant-form {
-        padding: 20px;
         max-width: 100%;
-    }
-
-    .form-group label {
-        font-size: 16px;
-    }
-
-    .form-group input[type="text"],
-    .form-group textarea {
-        font-size: 14px;
-    }
-
-    .submit-button {
-        font-size: 18px;
+        padding: 0 20px;
     }
 }
