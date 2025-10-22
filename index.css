@@ -257,6 +257,11 @@ body.content-page {
         -1px 1px 0 #BA894D;
 }
 
+.description2 a {
+    color: #f4d03f;
+    text-decoration: underline;
+}
+
 /* Страница галереи растений */
 body.garden-page {
     display: flex;
