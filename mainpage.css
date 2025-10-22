@@ -76,7 +76,7 @@ body {
 } */
 
 .nav-manual {
-    top: 20px;
+    top: 80px;
     left: 348px;
     transform: rotate(-50deg);
 }
@@ -91,7 +91,6 @@ body {
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%) rotate(-5deg);
-    font-weight: bold;
 }
 
 /* Мобильная адаптация */
