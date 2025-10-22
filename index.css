@@ -544,6 +544,12 @@ body.plant-page .page-title {
         -1px 1px 0 #BA894D;
 }
 
+.copyright a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .copyright {
         font-size: 12px;

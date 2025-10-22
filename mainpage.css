@@ -38,6 +38,12 @@ body {
         -1px 1px 0 #BA894D;
 }
 
+.copyright a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* Главная страница */
 .main-title {
     max-width: 800px;
