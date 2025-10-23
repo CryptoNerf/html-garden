@@ -10,16 +10,34 @@ body {
     flex-direction: column;
     align-items: center;
     overflow-x: hidden;
+    position: relative;
     /* justify-content: center; */
 }
 
+/* Видео фон с бабочками */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
 /* Wrapper для контента чтобы copyright был внизу */
-body > *:not(.copyright) {
+body > *:not(.copyright):not(.background-video) {
     flex-shrink: 0;
+    /* position: relative; */
+    z-index: 1;
 }
 
 body > .copyright {
     margin-top: auto;
+    position: relative;
+    z-index: 1;
 }
 
 /* Главная страница */

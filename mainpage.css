@@ -9,6 +9,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+}
+
+/* Видео фон с бабочками */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.9;
+    pointer-events: none;
 }
 
 /* Основной контент центрируется */
@@ -19,6 +33,8 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 /* Copyright всегда внизу */
@@ -36,6 +52,8 @@ body {
         -1px -1px 0 #BA894D,
         1px -1px 0 #BA894D,
         -1px 1px 0 #BA894D;
+    position: relative;
+    z-index: 1;
 }
 
 .copyright a {
