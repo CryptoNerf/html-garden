@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="mainpage.css">
 </head>
 <body>
-    <video class="background-video" autoplay loop muted playsinline>
-        <source src="image/butterflies.webm" type="video/webm">
+    <video class="background-video" autoplay loop muted playsinline preload="auto">
+        <source src="image/trybutt.webm" type="video/webm">
     </video>
 
     <div class="main-content">
@@ -43,7 +43,28 @@
     </div>
 
     <script>
-        // Placeholder для будущего функционала
+        // Принудительный запуск видео на мобильных устройствах
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.background-video');
+
+            // Пытаемся запустить видео
+            const playPromise = video.play();
+
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log('Autoplay prevented:', error);
+                    // Если автоплей заблокирован, запускаем при первом взаимодействии
+                    document.body.addEventListener('touchstart', function() {
+                        video.play();
+                    }, { once: true });
+                });
+            }
+
+            // Обработка ошибок загрузки
+            video.addEventListener('error', function(e) {
+                console.error('Video error:', e);
+            });
+        });
     </script>
 </body>
 </html>
