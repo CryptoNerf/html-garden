@@ -208,10 +208,26 @@ body.content-page {
     }
 
     .plant-circle, .user-circle {
-        width: 90vw;
-        max-width: 500px;
-        min-width: 280px;
-        min-height: 280px;
+        width: 90vw !important;
+        max-width: 500px !important;
+        min-width: 300px !important;
+        height: 90vw !important;
+        max-height: 500px !important;
+        min-height: 300px !important;
+    }
+
+    .plant-image {
+        width: 65% !important;
+        height: 65% !important;
+        max-width: none !important;
+        max-height: none !important;
+        min-width: 200px !important;
+        min-height: 200px !important;
+    }
+
+    .user-photo {
+        width: 35% !important;
+        min-width: 100px !important;
     }
 
     .plant-name-text, .plant-description-text, .plant-date-text {
