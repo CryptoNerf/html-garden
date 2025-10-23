@@ -24,10 +24,7 @@
     <link rel="stylesheet" href="mainpage.css">
 </head>
 <body>
-    <video class="background-video background-video-desktop" autoplay loop muted playsinline preload="auto">
-        <source src="image/trybutt.webm" type="video/webm">
-    </video>
-    <img src="image/butterflyapng.png" alt="" class="background-video background-video-mobile" style="display: none;">
+    <img src="image/butterwebp.webp" alt="" class="background-video">
 
     <div class="main-content">
         <img src="image/welcome to html-garden.png" alt="Welcome to HTML-GARDEN" class="main-title">
@@ -44,32 +41,7 @@
     </div>
 
     <script>
-        // Определяем мобильные устройства и переключаем на APNG
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-        const desktopVideo = document.querySelector('.background-video-desktop');
-        const mobileImage = document.querySelector('.background-video-mobile');
-
-        if (isMobile) {
-            // На мобильных показываем APNG с прозрачностью
-            desktopVideo.style.display = 'none';
-            mobileImage.style.display = 'block';
-        } else {
-            // На десктопе запускаем WebM видео
-            document.addEventListener('DOMContentLoaded', function() {
-                const playPromise = desktopVideo.play();
-
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        console.log('Autoplay prevented:', error);
-                    });
-                }
-
-                desktopVideo.addEventListener('error', function(e) {
-                    console.error('Video error:', e);
-                });
-            });
-        }
+        // Placeholder для будущего функционала
     </script>
 </body>
 </html>
