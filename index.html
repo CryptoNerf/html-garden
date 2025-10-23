@@ -24,10 +24,9 @@
     <link rel="stylesheet" href="mainpage.css">
 </head>
 <body>
-    <video class="background-video background-video-webm" autoplay loop muted playsinline>
-        <source src="image/butterflies.webm" type="video/webm">
+    <video class="background-video" autoplay loop muted playsinline>
+        <source src="image/butterflies_greenback.webm" type="video/webm">
     </video>
-    <img src="image/butterflyapng.png" alt="" class="background-video background-video-apng" style="display: none;">
 
     <div class="main-content">
         <img src="image/welcome to html-garden.png" alt="Welcome to HTML-GARDEN" class="main-title">
@@ -44,15 +43,7 @@
     </div>
 
     <script>
-        // Определяем iOS и Safari для переключения на APNG
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-        if (isIOS || isSafari) {
-            // На iOS и Safari используем APNG вместо WebM
-            document.querySelector('.background-video-webm').style.display = 'none';
-            document.querySelector('.background-video-apng').style.display = 'block';
-        }
+        // Placeholder для будущего функционала
     </script>
 </body>
 </html>

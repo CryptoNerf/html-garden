@@ -208,7 +208,10 @@ body.content-page {
     }
 
     .plant-circle, .user-circle {
+        width: 90vw;
+        max-width: 500px;
         min-width: 280px;
+        min-height: 280px;
     }
 
     .plant-name-text, .plant-description-text, .plant-date-text {
@@ -354,9 +357,18 @@ body.plant-page .page-title {
     width: 100%;
     max-width: 600px;
     aspect-ratio: 1 / 1;
+    min-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Фикс для устройств не поддерживающих aspect-ratio */
+@supports not (aspect-ratio: 1 / 1) {
+    .plant-circle, .user-circle {
+        height: 0;
+        padding-bottom: 100%;
+    }
 }
 
 .circle-bg {
