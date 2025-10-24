@@ -28,7 +28,8 @@
         <source src="image/trybutt.webm" type="video/webm">
     </video>
     <img src="image/butterwebp.webp" alt="" class="background-video background-video-desktop-webp" style="display: none;">
-    <img src="image/butterwebp_720p.webp" alt="" class="background-video background-video-mobile" style="display: none;">
+    <img src="image/butterwebp_720p.webp" alt="" class="background-video background-video-android" style="display: none;">
+    <img src="image/butterflies_720p.apng" alt="" class="background-video background-video-ios" style="display: none;">
 
     <div class="main-content">
         <picture>
@@ -48,8 +49,9 @@
     </div>
 
     <script>
-        // Определяем Android устройства
+        // Определяем устройства
         const isAndroid = /Android/i.test(navigator.userAgent);
+        const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
         // Подключаем шрифт только для Android
@@ -71,17 +73,32 @@
 
         const desktopVideo = document.querySelector('.background-video-desktop');
         const desktopWebp = document.querySelector('.background-video-desktop-webp');
-        const mobileWebp = document.querySelector('.background-video-mobile');
+        const androidWebp = document.querySelector('.background-video-android');
+        const iosApng = document.querySelector('.background-video-ios');
 
-        if (isMobile) {
-            // На мобильных используем оптимизированный WebP 720p
+        if (isIOS) {
+            // На iOS используем APNG (Safari хорошо работает с APNG)
             desktopVideo.style.display = 'none';
             desktopWebp.style.display = 'none';
-            mobileWebp.style.display = 'block';
+            androidWebp.style.display = 'none';
+            iosApng.style.display = 'block';
+        } else if (isAndroid) {
+            // На Android используем WebP 720p
+            desktopVideo.style.display = 'none';
+            desktopWebp.style.display = 'none';
+            iosApng.style.display = 'none';
+            androidWebp.style.display = 'block';
+        } else if (isMobile) {
+            // На других мобильных устройствах используем APNG
+            desktopVideo.style.display = 'none';
+            desktopWebp.style.display = 'none';
+            androidWebp.style.display = 'none';
+            iosApng.style.display = 'block';
         } else {
             // На десктопе используем полноразмерный WebP 4K
             desktopVideo.style.display = 'none';
-            mobileWebp.style.display = 'none';
+            androidWebp.style.display = 'none';
+            iosApng.style.display = 'none';
             desktopWebp.style.display = 'block';
         }
     </script>
