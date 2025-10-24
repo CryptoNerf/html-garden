@@ -20,7 +20,10 @@
         </a>
     </div>
 
-    <img src="image/manual.png" alt="Manual" class="page-title-manual">
+    <picture>
+        <source srcset="image/manual.webp" type="image/webp">
+        <img src="image/manual.png" alt="Manual" class="page-title-manual">
+    </picture>
 
     <div class="content-wrapper">
         <p class="manual-text" id="manualText">
@@ -218,7 +221,14 @@
             link.rel = 'stylesheet';
             link.href = 'https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap';
             document.head.appendChild(link);
-            document.body.style.fontFamily = "'Comic Neue', 'Comic Sans MS', cursive";
+
+            const style = document.createElement('style');
+            style.textContent = `
+                body, .manual-text, .copyright, .copyright a, label, input, textarea, button {
+                    font-family: 'Comic Neue', 'Comic Sans MS', cursive !important;
+                }
+            `;
+            document.head.appendChild(style);
         }
     </script>
 

@@ -31,7 +31,10 @@
     <img src="image/butterwebp_720p.webp" alt="" class="background-video background-video-mobile" style="display: none;">
 
     <div class="main-content">
-        <img src="image/welcome to html-garden.png" alt="Welcome to HTML-GARDEN" class="main-title">
+        <picture>
+            <source srcset="image/welcome to html-garden.webp" type="image/webp">
+            <img src="image/welcome to html-garden.png" alt="Welcome to HTML-GARDEN" class="main-title" loading="eager">
+        </picture>
 
         <div class="shapka">
             <a href="manual.html" class="nav-link nav-manual">manual</a>
@@ -56,8 +59,14 @@
             link.href = 'https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap';
             document.head.appendChild(link);
 
-            // Применяем шрифт к body
-            document.body.style.fontFamily = "'Comic Neue', 'Comic Sans MS', cursive";
+            // Применяем шрифт через style элемент с !important
+            const style = document.createElement('style');
+            style.textContent = `
+                body, .nav-link, .copyright, .copyright a {
+                    font-family: 'Comic Neue', 'Comic Sans MS', cursive !important;
+                }
+            `;
+            document.head.appendChild(style);
         }
 
         const desktopVideo = document.querySelector('.background-video-desktop');

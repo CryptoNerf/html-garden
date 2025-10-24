@@ -20,7 +20,10 @@
         </a>
     </div>
 
-    <img src="image/plant desc.png" alt="Plant description" class="page-title-plant">
+    <picture>
+        <source srcset="image/plant desc.webp" type="image/webp">
+        <img src="image/plant desc.png" alt="Plant description" class="page-title-plant">
+    </picture>
 
     <div class="plant-container">
         <div class="plant-circle">
@@ -104,7 +107,15 @@
             link.rel = 'stylesheet';
             link.href = 'https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap';
             document.head.appendChild(link);
-            document.body.style.fontFamily = "'Comic Neue', 'Comic Sans MS', cursive";
+
+            const style = document.createElement('style');
+            style.textContent = `
+                body, .plant-name-text, .plant-description-text, .plant-date-text,
+                .user-name-text, .user-city-text, .copyright, .copyright a {
+                    font-family: 'Comic Neue', 'Comic Sans MS', cursive !important;
+                }
+            `;
+            document.head.appendChild(style);
         }
     </script>
 
