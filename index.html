@@ -45,8 +45,20 @@
     </div>
 
     <script>
-        // Определяем мобильные устройства
+        // Определяем Android устройства
+        const isAndroid = /Android/i.test(navigator.userAgent);
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        // Подключаем шрифт только для Android
+        if (isAndroid) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap';
+            document.head.appendChild(link);
+
+            // Применяем шрифт к body
+            document.body.style.fontFamily = "'Comic Neue', 'Comic Sans MS', cursive";
+        }
 
         const desktopVideo = document.querySelector('.background-video-desktop');
         const desktopWebp = document.querySelector('.background-video-desktop-webp');

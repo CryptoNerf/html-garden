@@ -96,6 +96,16 @@
 
         // Загружаем детали при загрузке страницы
         loadPlantDetails();
+
+        // Подключаем шрифт Comic Neue только для Android
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        if (isAndroid) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap';
+            document.head.appendChild(link);
+            document.body.style.fontFamily = "'Comic Neue', 'Comic Sans MS', cursive";
+        }
     </script>
 
     <div class="copyright">
