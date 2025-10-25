@@ -7,3 +7,4 @@ node_modules/
 # Favicon generation script
 create_favicons.py
 convert_to_apng.py
+optimize_apng.py

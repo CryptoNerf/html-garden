@@ -24,12 +24,7 @@
     <link rel="stylesheet" href="mainpage.css">
 </head>
 <body>
-    <video class="background-video background-video-desktop" autoplay loop muted playsinline preload="auto">
-        <source src="image/trybutt.webm" type="video/webm">
-    </video>
-    <img src="image/butterwebp.webp" alt="" class="background-video background-video-desktop-webp" style="display: none;">
-    <img src="image/butterwebp_720p.webp" alt="" class="background-video background-video-android" style="display: none;">
-    <img src="image/butterflies_720p.apng" alt="" class="background-video background-video-ios" style="display: none;">
+    <!-- Фон загружается динамически через JavaScript -->
 
     <div class="main-content">
         <picture>
@@ -61,7 +56,6 @@
             link.href = 'https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap';
             document.head.appendChild(link);
 
-            // Применяем шрифт через style элемент с !important
             const style = document.createElement('style');
             style.textContent = `
                 body, .nav-link, .copyright, .copyright a {
@@ -71,35 +65,45 @@
             document.head.appendChild(style);
         }
 
-        const desktopVideo = document.querySelector('.background-video-desktop');
-        const desktopWebp = document.querySelector('.background-video-desktop-webp');
-        const androidWebp = document.querySelector('.background-video-android');
-        const iosApng = document.querySelector('.background-video-ios');
+        // Динамически загружаем только нужный фон
+        function loadBackground() {
+            let backgroundElement;
 
-        if (isIOS) {
-            // На iOS используем APNG (Safari хорошо работает с APNG)
-            desktopVideo.style.display = 'none';
-            desktopWebp.style.display = 'none';
-            androidWebp.style.display = 'none';
-            iosApng.style.display = 'block';
-        } else if (isAndroid) {
-            // На Android используем WebP 720p
-            desktopVideo.style.display = 'none';
-            desktopWebp.style.display = 'none';
-            iosApng.style.display = 'none';
-            androidWebp.style.display = 'block';
-        } else if (isMobile) {
-            // На других мобильных устройствах используем APNG
-            desktopVideo.style.display = 'none';
-            desktopWebp.style.display = 'none';
-            androidWebp.style.display = 'none';
-            iosApng.style.display = 'block';
+            if (isIOS) {
+                // iOS - APNG
+                backgroundElement = document.createElement('img');
+                backgroundElement.src = 'image/butterflies_mobile.apng';
+                backgroundElement.className = 'background-video';
+                backgroundElement.alt = '';
+            } else if (isAndroid) {
+                // Android - WebP 720p
+                backgroundElement = document.createElement('img');
+                backgroundElement.src = 'image/butterwebp_720p.webp';
+                backgroundElement.className = 'background-video';
+                backgroundElement.alt = '';
+            } else if (isMobile) {
+                // Другие мобильные - APNG
+                backgroundElement = document.createElement('img');
+                backgroundElement.src = 'image/butterflies_mobile.apng';
+                backgroundElement.className = 'background-video';
+                backgroundElement.alt = '';
+            } else {
+                // Desktop - WebP 4K
+                backgroundElement = document.createElement('img');
+                backgroundElement.src = 'image/butterwebp.webp';
+                backgroundElement.className = 'background-video';
+                backgroundElement.alt = '';
+            }
+
+            // Вставляем фон в начало body
+            document.body.insertBefore(backgroundElement, document.body.firstChild);
+        }
+
+        // Загружаем фон после загрузки основного контента
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadBackground);
         } else {
-            // На десктопе используем полноразмерный WebP 4K
-            desktopVideo.style.display = 'none';
-            androidWebp.style.display = 'none';
-            iosApng.style.display = 'none';
-            desktopWebp.style.display = 'block';
+            loadBackground();
         }
     </script>
 </body>

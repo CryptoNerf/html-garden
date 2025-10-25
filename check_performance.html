@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Performance Check</title>
+</head>
+<body>
+    <h1>Loading Test</h1>
+    <div id="results"></div>
+    <script>
+        const results = document.getElementById('results');
+
+        // Измеряем время загрузки страницы
+        window.addEventListener('load', () => {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            const resources = performance.getEntriesByType('resource');
+
+            let html = '<h2>Page Load Time</h2>';
+            html += `<p>Total: ${(perfData.loadEventEnd - perfData.fetchStart).toFixed(2)}ms</p>`;
+            html += `<p>DNS: ${(perfData.domainLookupEnd - perfData.domainLookupStart).toFixed(2)}ms</p>`;
+            html += `<p>Connection: ${(perfData.connectEnd - perfData.connectStart).toFixed(2)}ms</p>`;
+            html += `<p>Response: ${(perfData.responseEnd - perfData.responseStart).toFixed(2)}ms</p>`;
+
+            html += '<h2>Resources (slowest first)</h2>';
+            const sortedResources = resources
+                .sort((a, b) => b.duration - a.duration)
+                .slice(0, 10);
+
+            html += '<ul>';
+            sortedResources.forEach(r => {
+                const name = r.name.split('/').pop();
+                html += `<li><strong>${name}</strong>: ${r.duration.toFixed(2)}ms (${(r.transferSize / 1024).toFixed(2)}KB)</li>`;
+            });
+            html += '</ul>';
+
+            results.innerHTML = html;
+        });
+    </script>
+</body>
+</html>
