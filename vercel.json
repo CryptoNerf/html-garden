@@ -1,5 +1,4 @@
 {
-  "regions": ["iad1", "fra1"],
   "headers": [
     {
       "source": "/image/(.*)",
