@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostics - HTML-GARDEN</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #0f0;
+        }
+        .metric {
+            margin: 10px 0;
+            padding: 10px;
+            background: #2a2a2a;
+            border-left: 4px solid #0f0;
+        }
+        .slow { border-left-color: #f00 !important; color: #f00; }
+        .medium { border-left-color: #fa0 !important; color: #fa0; }
+        .fast { border-left-color: #0f0 !important; }
+        h1, h2 { color: #0ff; }
+        button {
+            background: #0f0;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        button:hover { background: #0ff; }
+        #results { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 HTML-GARDEN Performance Diagnostics</h1>
+    <button onclick="runTests()">▶ Run Full Diagnostics</button>
+    <div id="results"></div>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+
+        async function runTests() {
+            resultsDiv.innerHTML = '<h2>⏳ Running tests...</h2>';
+
+            const tests = {
+                dns: await testDNS(),
+                server: await testServerResponse(),
+                images: await testImageLoading(),
+                resources: await testAllResources()
+            };
+
+            displayResults(tests);
+        }
+
+        async function testDNS() {
+            const start = performance.now();
+            try {
+                const response = await fetch(window.location.origin + '/favicon.ico', { method: 'HEAD' });
+                const time = performance.now() - start;
+                return {
+                    name: 'DNS + Connection Time',
+                    time: time,
+                    status: time < 500 ? 'fast' : time < 1000 ? 'medium' : 'slow',
+                    details: `${time.toFixed(0)}ms`
+                };
+            } catch (e) {
+                return { name: 'DNS Test', status: 'slow', details: 'Failed: ' + e.message };
+            }
+        }
+
+        async function testServerResponse() {
+            const start = performance.now();
+            try {
+                const response = await fetch(window.location.origin + '/index.html');
+                const text = await response.text();
+                const time = performance.now() - start;
+                return {
+                    name: 'Server Response (index.html)',
+                    time: time,
+                    status: time < 200 ? 'fast' : time < 500 ? 'medium' : 'slow',
+                    details: `${time.toFixed(0)}ms - ${(text.length / 1024).toFixed(1)}KB`
+                };
+            } catch (e) {
+                return { name: 'Server Test', status: 'slow', details: 'Failed: ' + e.message };
+            }
+        }
+
+        async function testImageLoading() {
+            const images = [
+                'image/welcome to html-garden.webp',
+                'image/butterwebp_720p.webp',
+                'image/butterflies_mobile.apng'
+            ];
+
+            const results = [];
+            for (const src of images) {
+                const start = performance.now();
+                try {
+                    const response = await fetch(src, { method: 'HEAD' });
+                    const time = performance.now() - start;
+                    const size = response.headers.get('content-length');
+                    const sizeMB = size ? (size / 1024 / 1024).toFixed(2) : 'unknown';
+
+                    results.push({
+                        name: src.split('/').pop(),
+                        time: time,
+                        status: time < 1000 ? 'fast' : time < 3000 ? 'medium' : 'slow',
+                        details: `${time.toFixed(0)}ms - ${sizeMB}MB`
+                    });
+                } catch (e) {
+                    results.push({
+                        name: src.split('/').pop(),
+                        status: 'slow',
+                        details: 'Failed: ' + e.message
+                    });
+                }
+            }
+            return results;
+        }
+
+        async function testAllResources() {
+            const resources = performance.getEntriesByType('resource');
+            const slowResources = resources
+                .filter(r => r.duration > 1000)
+                .sort((a, b) => b.duration - a.duration)
+                .slice(0, 5);
+
+            return slowResources.map(r => ({
+                name: r.name.split('/').pop(),
+                time: r.duration,
+                status: r.duration < 2000 ? 'medium' : 'slow',
+                details: `${r.duration.toFixed(0)}ms - ${(r.transferSize / 1024).toFixed(1)}KB`
+            }));
+        }
+
+        function displayResults(tests) {
+            let html = '<h2>📊 Diagnostic Results</h2>';
+
+            // DNS
+            html += '<h3>🌐 Network</h3>';
+            html += createMetric(tests.dns);
+            html += createMetric(tests.server);
+
+            // Images
+            html += '<h3>🖼️ Critical Images</h3>';
+            tests.images.forEach(img => {
+                html += createMetric(img);
+            });
+
+            // Slow resources
+            if (tests.resources.length > 0) {
+                html += '<h3>⚠️ Slowest Resources</h3>';
+                tests.resources.forEach(r => {
+                    html += createMetric(r);
+                });
+            }
+
+            // Recommendations
+            html += '<h3>💡 Recommendations</h3>';
+            const recommendations = generateRecommendations(tests);
+            html += `<div class="metric">${recommendations}</div>`;
+
+            resultsDiv.innerHTML = html;
+        }
+
+        function createMetric(metric) {
+            return `<div class="metric ${metric.status}">
+                <strong>${metric.name}</strong>: ${metric.details}
+            </div>`;
+        }
+
+        function generateRecommendations(tests) {
+            let rec = [];
+
+            if (tests.dns.time > 1000) {
+                rec.push('❌ DNS/Connection очень медленный (>1s). Проблема: Vercel region или CDN.');
+            }
+
+            if (tests.server.time > 500) {
+                rec.push('❌ Server Response медленный. Проблема: cold start или region.');
+            }
+
+            const slowImages = tests.images.filter(i => i.time > 3000);
+            if (slowImages.length > 0) {
+                rec.push(`❌ ${slowImages.length} изображений загружаются >3s. Проблема: размер файлов или CDN.`);
+            }
+
+            if (rec.length === 0) {
+                rec.push('✅ Всё работает нормально! Если сайт медленный, проблема в интернет-соединении.');
+            }
+
+            return rec.join('<br>');
+        }
+
+        // Auto-run on load
+        window.addEventListener('load', () => {
+            setTimeout(runTests, 100);
+        });
+    </script>
+</body>
+</html>
