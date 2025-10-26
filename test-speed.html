@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Speed Test</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #000;
+            color: #0f0;
+        }
+        .result {
+            margin: 10px 0;
+            padding: 10px;
+            background: #222;
+        }
+        .fast { color: #0f0; }
+        .slow { color: #f00; }
+    </style>
+</head>
+<body>
+    <h1>⚡ Quick Speed Test</h1>
+    <div id="results">Testing...</div>
+
+    <script>
+        const start = performance.now();
+        const results = document.getElementById('results');
+
+        // Test 1: Page load time
+        window.addEventListener('load', () => {
+            const loadTime = performance.now() - start;
+            const loadClass = loadTime < 2000 ? 'fast' : 'slow';
+
+            let html = `<div class="result ${loadClass}">Page Load: ${loadTime.toFixed(0)}ms</div>`;
+
+            // Test 2: Navigation timing
+            const nav = performance.getEntriesByType('navigation')[0];
+            if (nav) {
+                const dnsTime = nav.domainLookupEnd - nav.domainLookupStart;
+                const connectTime = nav.connectEnd - nav.connectStart;
+                const responseTime = nav.responseEnd - nav.responseStart;
+                const ttfb = nav.responseStart - nav.requestStart;
+
+                html += `<div class="result ${dnsTime < 200 ? 'fast' : 'slow'}">DNS: ${dnsTime.toFixed(0)}ms</div>`;
+                html += `<div class="result ${connectTime < 200 ? 'fast' : 'slow'}">Connect: ${connectTime.toFixed(0)}ms</div>`;
+                html += `<div class="result ${ttfb < 500 ? 'fast' : 'slow'}">TTFB (Time To First Byte): ${ttfb.toFixed(0)}ms</div>`;
+                html += `<div class="result ${responseTime < 1000 ? 'fast' : 'slow'}">Response: ${responseTime.toFixed(0)}ms</div>`;
+            }
+
+            // Test 3: Check if Cloudflare is working
+            fetch('/', { method: 'HEAD' })
+                .then(response => {
+                    const cfRay = response.headers.get('cf-ray');
+                    const server = response.headers.get('server');
+
+                    html += `<div class="result ${cfRay ? 'fast' : 'slow'}">Cloudflare: ${cfRay ? '✅ Active (CF-RAY: ' + cfRay + ')' : '❌ Not detected'}</div>`;
+                    html += `<div class="result">Server: ${server || 'unknown'}</div>`;
+
+                    results.innerHTML = html;
+                });
+
+            results.innerHTML = html + '<div class="result">Checking Cloudflare...</div>';
+        });
+    </script>
+</body>
+</html>
