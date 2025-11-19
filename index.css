@@ -481,6 +481,7 @@ body.plant-page .page-title {
     animation: float 3s ease-in-out infinite;
     transition: transform 0.3s ease;
     cursor: pointer;
+    will-change: transform;
 }
 
 .special-butterfly-link:hover {
@@ -516,9 +517,12 @@ body.plant-page .page-title {
         bottom: -250px;
         transform: translateX(-50%);
         animation: float-mobile 3s ease-in-out infinite;
+        will-change: transform;
+        width: 250px;
     }
 
     .special-butterfly-gif {
+        width: 250px;
         max-width: 250px;
     }
 
