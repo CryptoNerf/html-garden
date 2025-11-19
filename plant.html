@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
 
-    <link rel="stylesheet" href="index.css?v=3">
+    <link rel="stylesheet" href="index.css?v=4">
 </head>
 <body class="plant-page">
     <div class="home-button-container">
@@ -98,11 +98,19 @@
 
             // Специальная гифка для растения с id: 26
             if (plant.id === 26) {
+                const specialLink = document.createElement('a');
+                specialLink.href = 'https://t.me/yfcnz1111';
+                specialLink.target = '_blank';
+                specialLink.rel = 'noopener noreferrer';
+                specialLink.className = 'special-butterfly-link';
+
                 const specialGif = document.createElement('img');
                 specialGif.src = 'image/butterflyforzoya.gif';
                 specialGif.alt = 'Butterfly for Zoya';
                 specialGif.className = 'special-butterfly-gif';
-                document.querySelector('.user-circle').appendChild(specialGif);
+
+                specialLink.appendChild(specialGif);
+                document.querySelector('.user-circle').appendChild(specialLink);
                 // Добавляем класс к body для специальных стилей
                 document.body.classList.add('has-butterfly');
             }
