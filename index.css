@@ -470,6 +470,58 @@ body.plant-page .page-title {
         1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
+/* Специальная гифка для растения id: 26 */
+.special-butterfly-gif {
+    position: absolute;
+    height: auto;
+    left: -460px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: float 3s ease-in-out infinite;
+    z-index: 10;
+}
+
+/* Делаем user-circle позиционированным для правильной работы абсолютного позиционирования */
+.plant-container .user-circle {
+    position: relative;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(-50%) translateX(0px);
+    }
+    50% {
+        transform: translateY(-50%) translateX(-10px);
+    }
+}
+
+/* На мобильных устройствах бабочка внизу */
+@media (max-width: 1024px) {
+    .special-butterfly-gif {
+        position: absolute;
+        max-width: 350px;
+        left: 50%;
+        top: auto;
+        bottom: -280px;
+        transform: translateX(-50%);
+        animation: float-mobile 3s ease-in-out infinite;
+    }
+
+    @keyframes float-mobile {
+        0%, 100% {
+            transform: translateX(-50%) translateY(0px);
+        }
+        50% {
+            transform: translateX(-50%) translateY(-10px);
+        }
+    }
+
+    /* Увеличиваем отступ для user-city-text когда есть бабочка */
+    body.has-butterfly .user-city-text {
+        margin-bottom: 180px;
+    }
+}
+
 /* Форма отправки на странице manual */
 .plant-form {
     max-width: 500px;

@@ -95,6 +95,17 @@
             document.getElementById('userCity').textContent = plant.city;
 
             document.title = `${plant.name} - HTML-GARDEN`;
+
+            // Специальная гифка для растения с id: 26
+            if (plant.id === 26) {
+                const specialGif = document.createElement('img');
+                specialGif.src = 'image/butterflyforzoya.gif';
+                specialGif.alt = 'Butterfly for Zoya';
+                specialGif.className = 'special-butterfly-gif';
+                document.querySelector('.user-circle').appendChild(specialGif);
+                // Добавляем класс к body для специальных стилей
+                document.body.classList.add('has-butterfly');
+            }
         }
 
         // Загружаем детали при загрузке страницы
