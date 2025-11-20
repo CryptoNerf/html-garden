@@ -272,7 +272,7 @@
       "description": "Сохраняет цвет все время года, если нет резкого похолодания. Наиболее распространен на дачах в летнее время года. Культивируется в основном в Китае для украшения детских утренников..",
       "plantedDate": "19.11.2025",
       "owner": "Аня",
-      "ownerPhoto": "/image/defoult.jpg",
+      "ownerPhoto": "/image/default.jpg",
       "city": "Чертаново"
     },
     {
@@ -285,6 +285,38 @@
       "owner": "Зоя Настоящая",
       "ownerPhoto": "/image/zoya.jpg",
       "city": "Москва"
+    },
+    {
+      "id": 27,
+      "name": "зщзщ.",
+      "image": "/image/зщзщ.png",
+      "largeImage": "/image/зщзщ.png",
+      "description": "=popo.",
+      "plantedDate": "19.11.2025",
+      "owner": "Летика Вокно.",
+      "ownerPhoto": "/image/default.jpg"
+    },
+    {
+      "id": 28,
+      "name": "Бюльбюль гомункулус.",
+      "image": "/image/бюльбюль гомункулус.png",
+      "largeImage": "/image/бюльбюль гомункулус.png",
+      "description": "Очень доброе как я <3.",
+      "plantedDate": "20.11.2025",
+      "owner": "Zhe Nya",
+      "ownerPhoto": "/image/zhe nya.jpg",
+      "city": "Чебоксары"
+    },
+    {
+      "id": 29,
+      "name": "Борщевик.",
+      "image": "/image/борщевик.png",
+      "largeImage": "/image/борщевик.png",
+      "description": "На нём растёт Борщ.",
+      "plantedDate": "20.11.2025",
+      "owner": "Артём Фоломеев",
+      "ownerPhoto": "/image/Артём Фоломеев.jpg",
+      "city": "Санкт-Петербург"
     }
   ]
 }
